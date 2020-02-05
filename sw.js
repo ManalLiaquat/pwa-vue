@@ -19,7 +19,7 @@ const precacheFiles = ["/pwa-vue/", "/pwa-vue/index.html"];
 self.addEventListener("install", e => {
   e.waitUntil(
     caches.open(CACHE).then(cache => {
-      return cache.addAll(contentToCache);
+      return cache.addAll(precacheFiles);
     })
   );
 });
