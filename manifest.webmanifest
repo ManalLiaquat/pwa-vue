@@ -1,0 +1,18 @@
+{
+  "name": "School",
+  "short_name": "School",
+  "description": "School",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "English",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "16x16 32x32 64x64 144x144 192x192 255x255"
+    }
+  ],
+  "screenshots": [],
+  "generated": "true"
+}
