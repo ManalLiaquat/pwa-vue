@@ -1,7 +1,7 @@
 // This is the service worker with the Cache-first network
 
 const CACHE = "school_v1";
-const precacheFiles = ["./index.html"];
+const precacheFiles = ["/pwa-vue/", "/pwa-vue/index.html"];
 
 self.addEventListener("install", function(event) {
   console.log("[PWA Builder] Install Event processing");

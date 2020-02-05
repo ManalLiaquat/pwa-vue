@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="canonical" href="https://ManalLiaquat.github.io/pwa-vue/" />
     <title>course_app</title>
     <link
       rel="stylesheet"
@@ -21,8 +22,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="manifest" href="/pwa-vue/manifest.webmanifest" />
+    <link rel="stylesheet" href="/pwa-vue/style.css" />
   </head>
 
   <body>
@@ -34,15 +35,15 @@
     </noscript>
     <div id="app"></div>
 
-    <script src="./store/index.js"></script>
-    <script src="./components/login.js"></script>
-    <script src="./components/signup.js"></script>
-    <script src="./components/courseDetails.js"></script>
-    <script src="./components/courses.js"></script>
-    <script src="./components/home.js"></script>
-    <script src="./components/addCourse.js"></script>
-    <script src="./router/index.js"></script>
-    <script src="./main.js"></script>
+    <script src="/pwa-vue/store/index.js"></script>
+    <script src="/pwa-vue/components/login.js"></script>
+    <script src="/pwa-vue/components/signup.js"></script>
+    <script src="/pwa-vue/components/courseDetails.js"></script>
+    <script src="/pwa-vue/components/courses.js"></script>
+    <script src="/pwa-vue/components/home.js"></script>
+    <script src="/pwa-vue/components/addCourse.js"></script>
+    <script src="/pwa-vue/router/index.js"></script>
+    <script src="/pwa-vue/main.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
         if (navigator.serviceWorker.controller) {
@@ -51,8 +52,8 @@
           );
         } else {
           navigator.serviceWorker
-            .register("sw.js", {
-              scope: "./"
+            .register("/pwa-vue/sw.js", {
+              scope: "/pwa-vue/"
             })
             .then(function(reg) {
               console.log(
