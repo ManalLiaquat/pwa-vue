@@ -1,36 +1,85 @@
-const Login = Vue.component('Login', {
-    data() {
-        return {
-            errorText: "",
-            userData: {
-                email: "",
-                password: "",
-                roles: ["STUDENT"]
-            }
+const Login = Vue.component("Login", {
+  data() {
+    return {
+      errorText: "",
+      userData: {
+        email: "",
+        password: "",
+        roles: ["STUDENT"]
+      }
+    };
+  },
+  methods: {
+    ...Vuex.mapMutations("loginInfo", ["SET_ISLOGGED", "SET_USERID"]),
+    login() {
+      let user = this.users.find(
+        u =>
+          u.email.toLowerCase().trim() ==
+            this.userData.email.toLowerCase().trim() &&
+          u.password == this.userData.password
+      );
+      if (user != null) {
+        this.SET_USERID(user.id);
+        this.SET_ISLOGGED(true);
+        this.$router.push({
+          name: "home"
+        });
+      } else {
+        this.errorText = "Authentication Failed";
+      }
+    }
+  },
+  computed: {
+    ...Vuex.mapGetters("userData", ["users"])
+  },
+  mounted: () => {
+    const randomNotification = () => {
+      Notification.requestPermission().then(function(permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          const games = [
+            { name: "Game 1", author: "Author 1", slug: "slug1" },
+            { name: "Game 2", author: "Author 2", slug: "slug2" },
+            { name: "Game 3", author: "Author 3", slug: "slug3" },
+            { name: "Game 4", author: "Author 4", slug: "slug4" },
+            { name: "Game 5", author: "Author 5", slug: "slug5" }
+          ];
+          //   var notification = new Notification("Hi there!");
+          var randomItem = Math.floor(Math.random() * games.length);
+          var notifTitle = games[randomItem].name;
+          var notifBody = "Created by " + games[randomItem].author + ".";
+          var notifImg = "data/img/" + games[randomItem].slug + ".jpg";
+          var options = {
+            body: notifBody,
+            icon: notifImg
+          };
+          var notif = new Notification(notifTitle, options);
+          setTimeout(randomNotification, 30000);
         }
-    },
-    methods: {
-        ...Vuex.mapMutations("loginInfo", ["SET_ISLOGGED", "SET_USERID"]),
-        login() {
-            let user = this.users.find(
-                u => u.email.toLowerCase().trim() == this.userData.email.toLowerCase().trim() &&
-                u.password == this.userData.password
-            )
-            if (user != null) {
-                this.SET_USERID(user.id)
-                this.SET_ISLOGGED(true)
-                this.$router.push({
-                    name: "home"
-                })
-            } else {
-                this.errorText = "Authentication Failed"
-            }
+      });
+    };
+
+    if (!("Notification" in window)) {
+      alert("This browser does not support desktop notification");
+    }
+
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+      // If it's okay let's create a notification
+      randomNotification();
+    }
+
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(function(permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          randomNotification();
         }
-    },
-    computed: {
-        ...Vuex.mapGetters("userData", ["users"])
-    },
-    template: `<div class="py-5">
+      });
+    }
+  },
+  template: `<div class="py-5">
 <div class="form-area text-left">
   <h4 class="text-center">Login</h4>
   <form @submit.prevent="login">
@@ -55,4 +104,4 @@ const Login = Vue.component('Login', {
   </form>
 </div>
 </div>`
-})
+});
