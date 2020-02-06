@@ -1,7 +1,7 @@
 // This is the service worker with the Cache-first network
 
 const CACHE = "js13kPWA-v2.1";
-const precacheFiles = ["/pwa-vue/", "/pwa-vue/index.html"];
+const precacheFiles = ["./index.html"];
 
 self.addEventListener("install", e => {
   self.skipWaiting();
