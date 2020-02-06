@@ -38,17 +38,17 @@ const Login = Vue.component("Login", {
         // If the user accepts, let's create a notification
         if (permission === "granted") {
           const games = [
-            { name: "Game 1", author: "Author 1", slug: "slug1" },
-            { name: "Game 2", author: "Author 2", slug: "slug2" },
-            { name: "Game 3", author: "Author 3", slug: "slug3" },
-            { name: "Game 4", author: "Author 4", slug: "slug4" },
-            { name: "Game 5", author: "Author 5", slug: "slug5" }
+            { name: "Game 1", author: "Iron Man", slug: "slug1" },
+            { name: "Game 2", author: "Thor", slug: "slug2" },
+            { name: "Game 3", author: "Captain America", slug: "slug3" },
+            { name: "Game 4", author: "Spider Man", slug: "slug4" },
+            { name: "Game 5", author: "Doctor Strange", slug: "slug5" }
           ];
           //   var notification = new Notification("Hi there!");
           var randomItem = Math.floor(Math.random() * games.length);
           var notifTitle = games[randomItem].name;
           var notifBody = "Created by " + games[randomItem].author + ".";
-          var notifImg = "data/img/" + games[randomItem].slug + ".jpg";
+          var notifImg = "./assets/images/" + games[randomItem].slug + ".jpg";
           var options = {
             body: notifBody,
             icon: notifImg
