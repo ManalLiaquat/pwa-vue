@@ -71,7 +71,10 @@ const Login = Vue.component("Login", {
     }
 
     // Otherwise, we need to ask the user for permission
-    else if (Notification.permission !== "denied") {
+    else if (
+      Notification.permission !== "denied" ||
+      Notification.permission === "default"
+    ) {
       Notification.requestPermission().then(function(permission) {
         // If the user accepts, let's create a notification
         if (permission === "granted") {
