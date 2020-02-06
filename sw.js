@@ -1,8 +1,9 @@
 // This is the service worker with the Cache-first network
 
-const CACHE = "js13kPWA-v2.1";
+const CACHE = "js13kPWA-v2.2";
 const precacheFiles = ["/pwa-vue/", "/pwa-vue/index.html"];
 
+// caching the files and assets
 self.addEventListener("install", e => {
   self.skipWaiting();
   e.waitUntil(
@@ -48,6 +49,7 @@ self.addEventListener("fetch", function(e) {
   );
 });
 
+// push notification handler
 self.addEventListener("push", function(e) {
   console.log("Push notification recieved!", e);
 });
